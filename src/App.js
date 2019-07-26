@@ -9,7 +9,17 @@ class App extends Component {
     timerIDs: []
   }
 
+  // handleAddTimer() {
+  //   setInterval( () => {
+  //     this.setState({
+  //       timerIDs: 
+  //     })
+  //   })
+  // }
 
+  componentDidMount() {
+    this.handleAddTimer()
+  }
   //Your code here:
 
 
