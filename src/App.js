@@ -12,13 +12,9 @@ class App extends Component {
 
   //Your code here:
 
-
-
-
-
-
-
-
+  componentDidMount() {
+    this.handleAddTimer()
+  }
 
   // No need to modify anything in render or the class methods below
   // Unless, of course, you're curious about how it all works
@@ -45,8 +41,19 @@ class App extends Component {
   // adds a random number for timer ID
   handleAddTimer = () => {
     this.setState(prevState => ({
-      timerIDs: [...prevState.timerIDs, Math.floor(Math.random()*1000)]
+      timerIDs: [
+        ...prevState.timerIDs,
+        this.newUniqueKey(prevState.timerIDs)
+      ]
     }))
+  }
+
+  newUniqueKey = (excludedKeys) => {
+    let key = Math.floor(Math.random()*Number.MAX_SAFE_INTEGER)
+    while (excludedKeys.includes(key)){
+      key = Math.floor(Math.random()*Number.MAX_SAFE_INTEGER)
+    }
+    return key
   }
 
   // removeTimer updates state, removing any timer that matches the provided author
